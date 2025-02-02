@@ -6,11 +6,11 @@ import multer from 'multer';
 const router = express.Router();
 const questionController = new QuestionController();
 
-router.post('add-bulk', [authM.verifyAccessToken, multer().single('file')], (req, res) => {
+router.post('/add-bulk', [authM.verifyAccessToken, multer().single('file')], (req, res) => {
     questionController.addQuestionsInBulk(req, res);
 });
 
-router.get('/:categoryId', [authM.verifyAccessToken], (req, res) => {
+router.get('/by-category', [authM.verifyAccessToken], (req, res) => {
     questionController.getQuestionsByCategory(req, res);
 });
 
