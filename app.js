@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { authRoutes } from './routes/auth.js';
 import { userRoutes } from './routes/user.js';
+import { questionRoutes } from './routes/questions.js';
 
 dotenv.config();
 const app = express();
@@ -14,7 +15,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
-// app.use('/questions', questionRoutes);
+app.use('/questions', questionRoutes);
 
 app.get('/ping', (req, res) => {
   res.status(200).json({

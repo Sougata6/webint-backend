@@ -13,3 +13,5 @@ router.post('add-bulk', [authM.verifyAccessToken, multer().single('file')], (req
 router.get('/:categoryId', [authM.verifyAccessToken], (req, res) => {
     questionController.getQuestionsByCategory(req, res);
 });
+
+export { router as questionRoutes };
