@@ -9,23 +9,26 @@ import csv from 'csv-parser';
 class QuestionController {
 
   getQuestionsByCategory = async(req, res) => {
-    const { categoryId } = req.params;
+    const { categoryId } = req.query;
+
+    let findBy = {}; //Brings all category wise questions 
+    if (categoryId) {
+      findBy._id = new ObjectId(categoryId);  //Brings the questions of a particular category
+    }
 
     try {
 
       const client = await dbService.getClient();
-      const questions = await client.collection(QUESTIONS_COLL).aggregate([
+      const questions = await client.collection(CATEGORIES_COLL).aggregate([
         {
-          $match: {
-            categories: new ObjectId(categoryId)
-          }
+          $match: findBy
         },
         {
           $lookup: {
-            from: CATEGORIES_COLL,
-            localField: 'categories',
-            foreignField: '_id',
-            as: 'categoryDetails'
+            from: QUESTIONS_COLL,
+            localField: '_id',
+            foreignField: 'categories',
+            as: 'questions'
           }
         }
       ]).toArray();
