@@ -1,0 +1,35 @@
+{
+  "name": "webint-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start-dev": "nodemon app.js",
+    "test": "test-dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sougata6/webint-backend.git"
+  },
+  "author": "Sougata Jana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sougata6/webint-backend/issues"
+  },
+  "homepage": "https://github.com/Sougata6/webint-backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.12.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.9",
+    "ulid": "^2.3.0"
+  }
+}
