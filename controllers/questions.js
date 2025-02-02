@@ -1,7 +1,8 @@
-import { Messages } from "../constants/message";
-import { sendResponse } from "../lib/utils";
+import { Messages } from "../constants/message.js";
+import { sendResponse } from "../lib/utils.js";
 import dbService from '../lib/database.js';
-import { CATEGORIES_COLL, QUESTIONS_COLL } from "../constants/collections";
+import { CATEGORIES_COLL, QUESTIONS_COLL } from "../constants/collections.js";
+import { ObjectId } from "mongodb";
 import fs from 'fs';
 import csv from 'csv-parser';
 
