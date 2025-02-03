@@ -8,7 +8,36 @@ import csv from 'csv-parser';
 
 class QuestionController {
 
-  getQuestionsByCategory = async(req, res) => {
+  getCategories = async (req, res) => {
+    const { categoryId } = req.query;
+    const findBy = {}, sortBy = {name: 1};
+
+    if (categoryId) {
+      findBy._id = categoryId;
+    }
+
+    try {
+
+      const client = await dbService.getClient();
+      const result = await client
+        .collection(CATEGORIES_COLL)
+        .find(findBy)
+        .sort(sortBy)
+        .toArray();
+
+      if (!result.length) {
+        return sendResponse(res, 204, true, Messages.NO_DATA_FOUND);
+      }
+
+      return sendResponse(res, 200, true, Messages.DATA_FETCH_SUCCESS, result);
+
+    } catch (error) {
+      console.log(error.toString());
+      return sendResponse(res, 500, Messages.INTERNAL_SERVER_ERROR);
+    }
+  };
+
+  getQuestionsByCategory = async (req, res) => {
     const { categoryId } = req.query;
 
     let findBy = {}; //Brings all category wise questions 

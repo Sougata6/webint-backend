@@ -8,6 +8,7 @@ export const Messages = {
     MANDATORY_FIELD_MISSING: 'mandatory fields missing',
     REGISTER_SUCCESS: 'user registered successfully',
     NO_TOKEN_FOUND: 'no token found',
+    NO_DATA_FOUND: 'no data found',
     INVALID_EXPIRED_TOKEN: 'invalid/expired token',
     NO_USER_DETAILS_FOUND: 'no user data found',
     LOGIN_SUCCESS: 'login successfully',
