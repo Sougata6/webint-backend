@@ -2,6 +2,7 @@ import { Messages } from "../constants/message.js";
 import dbService from "../lib/database.js";
 import { USERS_COLL } from "../constants/collections.js";
 import { sendResponse } from "../lib/utils.js";
+import { uploadFile } from "../services/aws.service.js";
 
 
 class UserController {
@@ -50,7 +51,8 @@ class UserController {
       const updatedData = { name, email, mobileNumber, addressDetails };
   
       if (profilePicture) {
-        updatedData.profilePicture = profilePicture;
+        const uploadedFile = await uploadFile(req, res);
+        updatedData.profilePicture = uploadedFile.url;
       }
   
       const client = await dbService.getClient();
