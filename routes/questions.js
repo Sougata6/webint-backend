@@ -14,4 +14,8 @@ router.get('/by-category', [authM.verifyAccessToken], (req, res) => {
     questionController.getQuestionsByCategory(req, res);
 });
 
+router.get('/categories', [authM.verifyAccessToken],  (req, res) => {
+    questionController.getCategories(req, res);
+})
+
 export { router as questionRoutes };
