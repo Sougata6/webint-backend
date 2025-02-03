@@ -31,7 +31,7 @@ const verifyAccessToken = async (req, res, next) => {
 		if (!activeAccessToken)
 			return sendResponse(res, 401, false, Messages.INVALID_EXPIRED_TOKEN);
 
-		if (!compareToken(token, activeAccessToken.token))
+		if (! await compareToken(token, activeAccessToken.token))
 			return sendResponse(res, 401, false, Messages.INVALID_EXPIRED_TOKEN);
 
 		req['tokenData'] = tokenData;
